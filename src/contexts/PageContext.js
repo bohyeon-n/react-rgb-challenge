@@ -4,17 +4,25 @@ const { Provider, Consumer } = React.createContext();
 
 class PageProvider extends React.Component {
   state = {
-    page: "main"
+    page: "main",
+    modal: false
   };
   changePage = page => {
     this.setState({
       page: page
     });
   };
+  changeModal = () => {
+    this.setState({
+      modal: !this.state.modal
+    })
+  }
   render() {
     const value = {
       page: this.state.page,
-      changePage: this.changePage
+      modal: this.state.modal,
+      changePage: this.changePage,
+      changeModal: this.changeModal
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }
