@@ -7,7 +7,7 @@ export default class ScoreComponent extends React.Component {
     <ScoreConsumer>
       {
         value => (
-          <div>
+          <div className='score'>
           score: {value.score}
           </div>
         )

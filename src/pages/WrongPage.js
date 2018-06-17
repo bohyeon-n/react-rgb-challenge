@@ -1,15 +1,31 @@
-import React from 'react'
-import ScoreComponent from '../components/ScoreComponent'
+import React from "react";
+import ScoreComponent from "../components/ScoreComponent";
+import { ScoreConsumer } from "../contexts/ScoreContext";
+import { PageConsumer } from "../contexts/PageContext";
 export default class WrongPage extends React.Component {
   render() {
-    return ( 
-      <div>
-      <div>too bad</div>
-      <ScoreComponent />
-      <button>
-        play again
-      </button>
-    </div>
-    )
+    return (
+      <ScoreConsumer>
+        {scoreValue => (
+          <PageConsumer>
+            {pageValue => (
+              <div
+                className={
+                  pageValue.modal && pageValue.page === "wrong"
+                    ? "modal show"
+                    : "modal"
+                }
+              >
+                <div>Too bad :(</div>
+                <ScoreComponent />
+                <button className='close' onClick={e => scoreValue.handleResetScore()}>
+                  play again
+                </button>
+              </div>
+            )}
+          </PageConsumer>
+        )}
+      </ScoreConsumer>
+    );
   }
 }

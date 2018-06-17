@@ -7,22 +7,18 @@ class PageProvider extends React.Component {
     page: "main",
     modal: false
   };
-  changePage = page => {
+  changePage = (page) => {
     this.setState({
-      page: page
+      page: page,
+      modal: !(this.state.modal)
     });
+    
   };
-  changeModal = () => {
-    this.setState({
-      modal: !this.state.modal
-    })
-  }
   render() {
     const value = {
       page: this.state.page,
-      modal: this.state.modal,
       changePage: this.changePage,
-      changeModal: this.changeModal
+      modal: this.state.modal
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }

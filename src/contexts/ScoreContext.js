@@ -10,21 +10,21 @@ class ScoreProvider extends React.Component {
     this.setState({
       score: this.state.score + 1
     });
+    this.props.updatePage("main");
+    this.props.changeColorCodes();
   };
   resetScore = () => {
     this.setState({
       score: 0
     });
-  };
-  updateScore = status => {
-    status === "right" ? this.incScore() : this.resetScore();
-    this.props.changeColorCode();
-    this.props.changePage("main");
+    this.props.updatePage("main");
+    this.props.changeColorCodes();
   };
   render() {
     const value = {
       score: this.state.score,
-      updateScore: this.updateScore
+      handleIncScore: this.incScore,
+      handleResetScore: this.resetScore
     };
     return <Provider value={value}>{this.props.children}</Provider>;
   }

@@ -1,13 +1,16 @@
-import React from 'react'
+import React from "react";
+import { ColorConsumer } from "../contexts/ColorContext";
 
 export default class AnswerCode extends React.Component {
   render() {
-    const {colorCodes, answerCode} = this.props
     return (
-      <div className="color-code">
-      {colorCodes[answerCode]}
-    </div>
-    )
+      <ColorConsumer>
+        {colorValue => (
+          <div className="color-code">
+            {colorValue.colorCodes[colorValue.answerCode]}
+          </div>
+        )}
+      </ColorConsumer>
+    );
   }
-  
 }
