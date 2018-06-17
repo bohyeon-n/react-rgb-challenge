@@ -6,14 +6,14 @@ export default class ColorItem extends React.Component {
   state = {
     selectedColor: null
   };
-  handleClickColor = (index, answerCode, func1) => {
+  handleClickColor = (index, answerCode, changePage) => {
     this.setState({
       selectedColor: index
     });
     if (index === answerCode) {
-      func1("right");
+      changePage("right");
     } else {
-      func1("wrong");
+      changePage("wrong");
     }
   };
 

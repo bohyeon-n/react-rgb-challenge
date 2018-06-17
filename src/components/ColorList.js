@@ -11,7 +11,6 @@ export default class ColorList extends React.Component {
         <AnswerCode />
         <ColorItem />
       </div>
-    
     );
   }
 }
