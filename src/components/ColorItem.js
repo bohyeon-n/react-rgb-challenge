@@ -1,4 +1,5 @@
 import React from "react";
+import classnames from 'classnames'
 import { GameConsumer } from "../contexts/GameContext";
 
 export default class ColorItem extends React.Component {
@@ -24,11 +25,7 @@ export default class ColorItem extends React.Component {
             {colorCodes.map((color, index) => (
               <div
                 key={index}
-                className={
-                  modal && index === this.state.selectedColor
-                    ? "box large"
-                    : "box"
-                }
+                className={classnames('box',{large: modal && index === this.state.selectedColor})}
                 style={{ backgroundColor: color }}
                 onClick={e =>
                   this.handleClickColor(index, answerCode, changePage)
