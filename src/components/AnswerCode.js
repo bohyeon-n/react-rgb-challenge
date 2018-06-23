@@ -1,16 +1,14 @@
 import React from "react";
-import { ColorConsumer } from "../contexts/ColorContext";
+import { GameConsumer } from "../contexts/GameContext";
 
 export default class AnswerCode extends React.Component {
   render() {
     return (
-      <ColorConsumer>
-        {colorValue => (
-          <div className="color-code">
-            {colorValue.colorCodes[colorValue.answerCode]}
-          </div>
+      <GameConsumer>
+        {({ colorCodes, answerCode}) => (
+          <div className="color-code">{colorCodes[answerCode]}</div>
         )}
-      </ColorConsumer>
+      </GameConsumer>
     );
   }
 }

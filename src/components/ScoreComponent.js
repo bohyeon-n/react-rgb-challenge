@@ -1,18 +1,15 @@
-import React from 'react'
-import { ScoreConsumer } from '../contexts/ScoreContext';
+import React from "react";
+import { GameConsumer } from "../contexts/GameContext";
+
 
 export default class ScoreComponent extends React.Component {
   render() {
     return (
-    <ScoreConsumer>
-      {
-        value => (
-          <div className='score'>
-          score: {value.score}
-          </div>
-        )
-      }
-    </ScoreConsumer>
-    )
+      <GameConsumer>
+        {({ score }) => (
+        <div className="score">score: {score}</div>
+        )}
+      </GameConsumer>
+    );
   }
 }

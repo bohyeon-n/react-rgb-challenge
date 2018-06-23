@@ -1,6 +1,5 @@
 import React from "react";
-import { PageConsumer} from "../contexts/PageContext";
-import { ColorConsumer } from "../contexts/ColorContext";
+import { GameConsumer } from "../contexts/GameContext";
 
 export default class ColorItem extends React.Component {
   state = {
@@ -19,34 +18,26 @@ export default class ColorItem extends React.Component {
 
   render() {
     return (
-      <ColorConsumer>
-        {colorValue => (
-          <PageConsumer>
-            {pageValue => (
-              <div className="color">
-                {colorValue.colorCodes.map((color, index) => (
-                  <div
-                    key={index}
-                    className={
-                      pageValue.modal && index === this.state.selectedColor
-                        ? "box large"
-                        : "box"
-                    }
-                    style={{ backgroundColor: color }}
-                    onClick={e =>
-                      this.handleClickColor(
-                        index,
-                        colorValue.answerCode,
-                        pageValue.changePage
-                      )
-                    }
-                  />
-                ))}
-              </div>
-            )}
-          </PageConsumer>
+      <GameConsumer>
+        {({ colorCodes, modal, answerCode, changePage }) => (
+          <div className="color">
+            {colorCodes.map((color, index) => (
+              <div
+                key={index}
+                className={
+                  modal && index === this.state.selectedColor
+                    ? "box large"
+                    : "box"
+                }
+                style={{ backgroundColor: color }}
+                onClick={e =>
+                  this.handleClickColor(index, answerCode, changePage)
+                }
+              />
+            ))}
+          </div>
         )}
-      </ColorConsumer>
+      </GameConsumer>
     );
   }
 }

@@ -1,13 +1,13 @@
 import React from "react";
 import ColorList from "../components/ColorList";
 import ScoreComponent from "../components/ScoreComponent";
-import RightPage from "./RightPage";
-import WrongPage from "./WrongPage";
-import { PageConsumer } from "../contexts/PageContext";
+import RightModal from '../components/RightModal'
+import WrongModal from '../components/WrongModal'
+import {GameConsumer} from '../contexts/GameContext'
 export default class MainPage extends React.Component {
   render() {
     return (
-      <PageConsumer>
+      <GameConsumer>
         {pageValue => (
           <div>
             <header className="header">
@@ -18,12 +18,12 @@ export default class MainPage extends React.Component {
             <ScoreComponent />
             <div className="color-box">
               <ColorList />
-              <RightPage />
-              <WrongPage />
+              <RightModal />
+              <WrongModal />
             </div>
           </div>
         )}
-      </PageConsumer>
+      </GameConsumer>
     );
   }
 }
